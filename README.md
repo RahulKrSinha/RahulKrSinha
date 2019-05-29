@@ -1,2 +1,2 @@
 # RahulKrSinha
-Repository to host/demo static pages.
+Repository to host/demo static pages
