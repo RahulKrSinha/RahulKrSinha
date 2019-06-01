@@ -166,7 +166,7 @@ h6 {
 #intro {
   width: 100%;
   position: relative;
-  background-color: #f0f0f0;
+  background-color: #ecf5ff;
   /* background: url("../img/intro-bg.png") center bottom no-repeat; */
   background-size: cover;
   padding: 200px 0 120px 0;
@@ -270,7 +270,7 @@ h6 {
 .main-nav .active > a,
 .main-nav li:hover > a {
   color: #007bff;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .main-nav .drop-down ul {
