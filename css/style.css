@@ -119,6 +119,18 @@ ol {
 	color: #40424a;
 }
 
+.btn-circle.btn-xl {
+    width: 60px;
+    height: 60px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+	line-height: 1.33;
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+}
+
 /* Image Popup */
 .img-popup-warp .mfp-content,
 .img-popup-warp.mfp-ready.mfp-removing .mfp-content {
@@ -173,6 +185,7 @@ ol {
 /*---------------------
 	Hero section
 -----------------------*/
+
 .hero-section {
 	/* background: #f2f7f8; */
 }
