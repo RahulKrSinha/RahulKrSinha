@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rahul Kr Sinha</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Civic - CV Resume">
+    <meta name="keywords" content="resume, civic, onepage, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="../img/r_icon.png" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i,700" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/flaticon.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <link rel="stylesheet" href="../css/w3.css">
+    <!-- <link rel="stylesheet" href="./css/mystyle.css"> -->
+
+</head>
+<style>
+    body {
+        background-color: #EEEEEE;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        display: block;
+        margin-top: 0.67em;
+        margin-bottom: 0.67em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+    }
+
+    code {
+        margin: 16px 0px 16px 40px;
+        padding: 10px;
+        content: "";
+        display: table;
+        clear: both;
+        color: #000 !important;
+        background-color: #f1f1f1 !important;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        width: 45em;
+    }
+
+    section {
+        font-size: 14pt;
+        padding-top: 40px;
+    }
+
+    ul {
+        padding-left: 40px;
+    }
+</style>
+
+<body>
+
+    <!-- Header section start -->
+    <header id="home" class="header-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="site-logo">
+                        <h2><a href="index.html">RKS</a></h2>
+                    </div>
+                </div>
+                <div class="col-md-8 text-md-right header-buttons">
+                    <a href="../Rahul_Kumar_Sinha_2018.pdf" target="_blank" class="site-btn">Download CV</a>
+                    <a href="index.html" class="site-btn">Home</a>
+                    <a href="mylearnings.html" class="site-btn">My Learnings</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header section end -->
+
+
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top"
+        style="max-width:1150px;background-color: #FFFFFF;box-shadow: 0px 0px 15px 2px #999999;padding: 10px;">
+
+        <div class="w3-content w3-margin-top" style="max-width:1000px;">
+
+            <!-- Notebook Header -->
+            <div style="text-align: center">
+                <h1 style="color:#888888">TUTORIAL</h1>
+                <hr>
+                <h1>A Production ready Question Answer(QnA) Application</h1>
+                <p style="color:#888888; text-align: center;font-size:14pt;">in django framework using word2vec</p>
+            </div>
+
+            <hr>
+
+            <div style="text-align: center">
+                <i class="fa fa-user" aria-hidden="true"></i> &nbsp; By Rahul Kumar Sinha |&nbsp;
+                <i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; 20 minutes read |&nbsp;
+                <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; 04/10/2019
+            </div>
+
+            <!-- Table of content  -->
+            <section>
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li>Introduction</li>
+                    <li>Installation</li>
+                    <li>Create and Configure Django project</li>
+                    <li>Create Models</li>
+                    <li>Registering Models to Admin</li>
+                    <li>Update Models and Admin</li>
+                    <li>Creating Views</li>
+                    <li>Django Template Engine Setup</li>
+                    <li>Update Views for POST Call</li>
+                    <li>Update Utilities</li>
+                    <li>Create Super User</li>
+                    <li>Lets run the code</li>
+                </ul>
+            </section>
+
+            <!-- Introduction -->
+            <section>
+                <h3>Introduction</h3>
+                <hr>
+                In this tutorial, we are going to create a question-answer application, where the question asked by the
+                user
+                will be matched with all the questions from the database using vector cosine similarity.
+                <br><br>
+                And the answer related to the most similar found question from the database will be returned to the
+                user.
+                <br>
+                Also, an admin will have the option to add more question answers to the database.
+                <br><br>
+                In this tutorial, we will be using the python package "magnitude".<br>
+                It is intended to be a simpler and faster alternative to current utilities for word vectors like Gensim.
+
+                Loading the binary files containing the word vectors takes Gensim 70 seconds, versus 0.72 seconds to
+                load
+                the corresponding Magnitude file, a 97x speed-up. Gensim uses 5GB of RAM versus 18KB for Magnitude.<br>
+                Hence it is ideal to be used in production.
+                <br><br>
+                Below is a view of the final application that will be created by the end of this tutorial.<br>
+                (Left - User View | Right - Admin View )
+            </section>
+
+            <!-- Snapshot -->
+            <div class="w3-row" style="padding: 20px;">
+                <div class="w3-col s6 w3-center">
+                    <img src="https://i.imgflip.com/3cfy0x.gif" title="user view" height="350px" />
+                </div>
+                <div class="w3-col s6 w3-center">
+                    <img src="https://i.imgflip.com/3cfy3e.gif" title="admin view" height="350px" />
+                </div>
+            </div>
+
+            <!-- Installation -->
+            <section>
+                <h3>Installation</h3>
+                <hr>
+                The first we need to do is a basic setup for our project which includes
+                <ul>
+                    <li>Creating a folder in which our code will reside.</li>
+                    <code>
+                        mkdir myproject<br>
+                        cd myproject
+                    </code>
+                    <li>Creating Virtual Environment (Using virtual environments is not mandatory, but it’s highly
+                        recommended)</li>
+
+                    <code>virtualenv venv</code>
+
+                    <li>Activating Virtual Environment.</li>
+                    <code>
+                        venv\Scripts\activate in windows<br>
+                        source venv/bin/activate in linux/mac</code>
+
+                    <em>Note: Enviroment can be deactivated using</em>
+                    <code>
+                        venv\Scripts\deactivate.bat
+                        source venv/bin/deactivate
+                    </code>
+
+
+                    <li>Installing required packages.</li>
+                    <code> pip install django pandas numpy pymagnitude django-pandas</code>
+                </ul>
+            </section>
+
+            <!-- Create and Configure Django project -->
+            <section>
+                <h3>Create and Configure Django project</h3>
+                <hr>
+
+                To create a Django project, run the command below:
+                <code>django-admin
+                    startproject myproject .</code>
+                <em> Note: "." in the above the command, instruct Django to create files in the current folder.</em>
+                <code>
+                    Next we need to create an app, execute the below command:<br>
+                    python manage.py startapp myapp</code>
+
+                Now that we created our first app, let’s configure our project to use it.
+                To do that, open the settings.py and try to find the INSTALLED_APPS variable and add our "myapp" app to
+                the list.
+                <code>
+                    INSTALLED_APPS = [
+                    <div style="margin-left:   2em;">
+                        'django.contrib.admin',<br>
+                        'django.contrib.auth',<br>
+                        'django.contrib.contenttypes',<br>
+                        'django.contrib.sessions',<br>
+                        'django.contrib.messages',<br>
+                        'django.contrib.staticfiles',<br>
+                        'myapp',
+                    </div>
+                    ]
+                </code>
+            </section>
+
+            <!-- Create Models -->
+            <section>
+                <h3>Create Models</h3>
+                <hr>
+
+                We will be creating QuenstionAnswer model that will store the questions, answers and question vectors in
+                our database.<br><br>
+
+                Open the models.py file inside the myapp, and add the following code:<br><br>
+
+                <b>models.py</b>
+                <code>
+                    from django.db import models<br><br>
+                    
+                    class QuestionAnswer(models.Model):
+                    <div style="margin-left: 2em;">
+                        question = models.CharField(max_length=500)<br>
+                        question_vector = models.BinaryField(blank=True)<br>
+                        answer = models.TextField()<br><br>
+                        
+                        class Meta:
+                        <div style="margin-left: 2em;">
+                            verbose_name_plural = 'QuestionAnswers'
+                            </div>
+                    </div>
+                    </code>
+
+                The inner class Meta, is way to provide metadata to your models.<br><br>
+
+                It is “anything that’s not a field”, such as ordering options (ordering), database table name<br>
+                (db_table), or human-readable singular and plural names (verbose_name and verbose_name_plural).<br><br>
+
+                A complete list of all possible Meta options can be found in the
+                <a href="https://docs.djangoproject.com/en/2.2/topics/db/models/#meta-options"><u>model option
+                        reference</u></a>.<br><br>
+
+                Now we need to make and run migration so that Django creates our models in the database.<br><br>
+
+                Run the below command:
+                <code>
+                    python manage.py makemigrations<br>
+                    python manage.py migrate
+                </code>
+                And its time to register the model.
+            </section>
+
+            <!-- Registering Models to Admin -->
+            <section>
+                <h3>Registering Models to Admin</h3>
+                <hr>
+
+                We will use Django Admin for CURD operations on our QuestionAnswer model.
+                To do so we need to register our model in admin panel.<br><br>
+
+                Hence open the admin.py file inside the myapp, and add the following code:<br><br>
+
+                <b>admin.py</b>
+                <code>
+                    from django.contrib import admin<br>
+                    from core.models import QuestionAnswers<br><br>
+                    
+                    
+                    @admin.register(QuestionAnswers)<br>
+                    class QuestionAnswersAdmin(admin.ModelAdmin):
+                    <div style="margin-left:  2em;">
+                        list_display = ['question', 'answer']
+                    </div>
+                    </code>
+            </section>
+
+            <!-- Word2Vec using pymagintude -->
+            <section>
+                <h3>Word2Vec using pymagintude</h3>
+                <hr>
+
+                In this section, we will be creating a function that will convert text to vectors. We will use this
+                function to convert all questions to vectors and save them as bytes.<br><br>
+                To do so, we will be using the pymagnitude module.<br><br>
+                First, let's download a glove 6b 300d, word2vec model from the <a
+                    href="http://magnitude.plasticity.ai/glove/light/glove.6B.300d.magnitude"><u>pymagnitude
+                        link</u></a>.<br><br>
+                And save the magnitude file in new folder "resources" under myproject, at the same level as
+                manage.py.<br><br>
+                Now, create a python file "utilities.py" inside the myapp folder.<br>
+                And add the following code.<br><br>
+
+                <b>utilities.py</b>
+                <code>
+                    import numpy as np<br>
+                    from pymagnitude import Magnitude<br>
+                    from string import punctuation<br>
+                    from resources.stopwords import STOPWORDS<br><br>
+                    
+                    
+                    model = Magnitude("./resources/glove.6B.300d.magnitude")<br><br>
+                    
+                    
+                    def text_to_vector(text):
+                    <div style="margin-left:  2em;">
+                        clean_text = text.translate(str.maketrans("","", punctuation))<br>
+                        clean_tokens = [t.lower() for t in clean_text.split() if t not in STOPWORDS]<br>
+                        text_vector = np.sum(model.query(clean_tokens), axis=0)<br>
+                        return text_vector
+                    </div>
+                    </code>
+            </section>
+
+            <section>
+                In the "text_to_vector" function, we are pre-processing the input text by removing all the punctuation
+                and stopwords.<br>
+                This helps in noise removal from the text. Then we query the model to fetch vectors for each word, and
+                column-wise add all the vectors to form a sentence vector.<br><br>
+
+                To normalize the vector, irrespective of sentence length, we average the vector by the number of tokens
+                in the sentence.<br><br>
+
+                And last, we return the final sentence vector.<br><br>
+
+
+                Also, create a file "stopwords.py" inside the "resources" folder and add the list of stopwords provided
+                by NLTK.<br><br>
+                <b>stopwords.py</b>
+
+                <code style="background-color:#EEEEEE">
+                    STOPWORDS = {'ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', 'about', 'once', 'during', 'out', 'very', 'having', 'with', 'they', 'own', 'an', 'be', 'some', 'for', 'do', 'its', 'yours', 'such', 'into', 'of', 'most', 'itself', 'other', 'off', 'is', 's', 'am', 'or', 'who', 'as', 'from', 'him', 'each', 'the', 'themselves', 'until', 'below', 'are', 'we', 'these', 'your', 'his', 'through', 'don', 'nor', 'me', 'were', 'her', 'more', 'himself', 'this', 'down', 'should', 'our', 'their', 'while', 'above', 'both', 'up', 'to', 'ours', 'had', 'she', 'all', 'no', 'when', 'at', 'any', 'before', 'them', 'same', 'and', 'been', 'have', 'in', 'will', 'on', 'does', 'yourselves', 'then', 'that', 'because', 'what', 'over', 'why', 'so', 'can', 'did', 'not', 'now', 'under', 'he', 'you', 'herself', 'has', 'just', 'where', 'too', 'only', 'myself', 'which', 'those', 'i', 'after', 'few', 'whom', 't', 'being', 'if', 'theirs', 'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 'here', 'than'}
+                    </code>
+            </section>
+
+            <!-- Update Models and Admin -->
+            <section>
+                <h3>Update Models and Admin</h3>
+                <hr>
+
+                Add the save method in our model class.<br><br>
+
+                In this method will convert question(text) to vectors(numpy array).<br>
+                And will save vectors as bytes in the database.<br><br>
+
+                <b>models.py</b>
+                <code>
+
+                    import numpy as np                           # < -- Here<br>
+                    from django.db import models<br>
+                    from core.utilities import text_to_vector    # < -- Here<br><br>
+                    
+                    
+                    class QuestionAnswers(models.Model):<br>
+                    <div style="margin-left:  2em;">
+                        question = models.CharField(max_length=500)<br>
+                        question_vector = models.BinaryField(blank=True)<br>
+                        answer = models.TextField()<br><br>
+                    
+                    
+                        def save(self, *args, **kwargs):          # < --  Here<br>
+                        <div style="margin-left:  2em;">
+                            self.question_vector = text_to_vector(self.question).tobytes()<br>
+                            response = super(QuestionAnswers, self).save(*args, **kwargs)<br>
+                            return response<br><br>
+                        </div>
+                    
+                        def vector_size(self):                   # < --  And here<br>
+                        <div style="margin-left:  2em;">
+                            if self.question_vector:<br>
+                            <div style="margin-left:  2em;">
+                                vector = np.frombuffer(self.question_vector, dtype='float32')<br>
+                                return str(len(vector))<br>
+                            </div>
+                            else:<br>
+                            <div style="margin-left:  2em;">
+                                return "0"<br><br>
+                            </div>
+                        </div>
+                        class Meta:<br>
+                        <div style="margin-left:  2em;">
+                            verbose_name_plural = 'QuestionAnswers'
+                        </div>
+                    </div>
+                            
+                    </code>
+
+
+                The vector_size method returns the length of vectors saved in the database.<br><br>
+
+                We will add this to the admin view.<br><br>
+
+                <b>admin.py</b>
+                <code>
+
+                    from django.contrib import admin<br>
+                    from core.models import QuestionAnswers<br><br>
+                    
+                    
+                    @admin.register(QuestionAnswers)<br>
+                    class QuestionAnswersAdmin(admin.ModelAdmin):<br>
+                        list_display = ['question', 'answer', 'vector_size']  # < -- Here<br>
+                        
+                    </code>
+
+            </section>
+
+            <!-- Creating Views -->
+            <section>
+                <h3>Creating Views</h3>
+                <hr>
+
+                Let's write our view that will handle the User requests.
+
+                <b>views.py</b>
+
+                <code>
+
+                    from django.shortcuts import render
+                    from django.views.decorators.csrf import csrf_exempt
+                    
+                    
+                    @csrf_exempt
+                    def default(request):
+                    <div style="margin-left: 2em;">
+                        if request.method == 'GET':
+                        <div style="margin-left: 2em;">
+                            return render(request, 'index.html')
+                        </div>
+                    </div>        
+                    </code>
+
+                Now we have to tell Django when to serve this view. It’s done inside the urls.py file
+
+                <b>urls.py</b>
+                <code>
+
+                    from django.contrib import admin<br>
+                    from django.urls import path, include<br>
+                    import core.views as core_views<br><br>
+                    
+                    urlpatterns = [
+                        <div style="margin-left: 2em;">
+                        path('admin/', admin.site.urls),
+                        path('', core_views.default, name="default"),   # < -- Here
+                        </div>
+                    ]
+                    
+                    </code>
+            </section>
+
+            <section>
+                <h3>Django Template Engine Setup</h3>
+                <hr>
+                
+                In the above view function, we are sending index.html as a response for the user request.  
+                We are using Django Template Engine to perform this.<br><br>
+                
+                Create a new folder named templates alongside with the myapp and resources folders.<br><br>
+                
+                Now within the templates folder, create an HTML file named index.html<br><br>
+                
+                <b>templates/index.html</b>
+            </section>
+            <section>
+                <xmp>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <title>Question Answer System</title>
+
+</head>
+
+<body class="container">
+<br>
+
+<header class="jumbotron text-center">
+    <h1>A Question Answer System</h1>
+    <p>using word2vec in Django for production</p>
+</header>
+
+<form method="post" class="form-horizontal">
+    Question:
+    <input type="text" name="text" class="form-control" placeholder="Enter question">
+    <br>
+    <button type="submit" class="btn btn-primary">Find Answer</button>
+</form>
+
+{% if answer %}
+    <hr>
+    <strong>Q: </strong>{{ question }}
+    <br>
+    <strong>Ans: </strong>{{ answer }}
+{% endif %}
+</body>
+</html>
+</xmp>
+            </section>
+        </div>
+    </div>
+
+</body>
+
+</html>
