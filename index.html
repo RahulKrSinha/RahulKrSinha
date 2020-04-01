@@ -59,7 +59,7 @@
                             <div class="col-lg-12">
 
                                 <h4>INDIA COVID-19 TRACKER</h4>
-                                <p>Visualizing the spread of the coronavirus outbreak in India over period of time. Data Scourced from <a href="https://www.covid19india.org/" target="_blank">covid19india.org</a></span>
+                                <p>Visualizing the spread of the coronavirus outbreak in India over period of time. Data Scourced from <a href="https://www.mohfw.gov.in/" target="_blank">Ministry of Health and Family Welfare</a></span>
 
                             </div>
 
@@ -72,8 +72,8 @@
                                 <p>Total Recovered Patients: <span style="color: green;" id="recovered"></span></p>
                                 <p>Total Deceased Patients: <span id="deceased"></span></p>
                                 <br>
-                                <p>New Patients in last one day: <span style="color: blue;" id="today"></span></p>
-                                <p>New Patients in last five week: <span style="color: blue;" id="last5days"></span></p>
+                                <p>Newly Identified Patients in last one day: <span style="color: blue;" id="today"></span></p>
+                                <p>Newly Identified Patients in last five days: <span style="color: blue;" id="last5days"></span></p>
                                 <br>
                                 <p>Patients Count in last 15 days</p>
                                 <div id="cumulative_chart"></div>
@@ -159,7 +159,7 @@
             name: "total cases",
             type: 'scatter',
             marker: {
-                color: 'blue'
+                color: '#0B3398'
             }
         };
 
@@ -172,7 +172,7 @@
             text: new_patients.map(String),
             textposition: 'auto',
             marker: {
-                color: 'blue'
+                color: '#0B3398'
             }
         };
 
