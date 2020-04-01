@@ -180,13 +180,29 @@
         var layout_cummulative = {
             yaxis: {
                 title: 'Total Number of Patients'
-            }
+            },
+            autosize: true,
+            margin: {
+                l: 50,
+                r: 10,
+                b: 100,
+                t: 50,
+                pad: 4
+            },
         }
 
         var layout_new_cases = {
             xaxis: {
                 title: 'Count of New Identified Patients'
-            }
+            },
+            autosize: true,
+            margin: {
+                l: 50,
+                r: 10,
+                b: 60,
+                t: 50,
+                pad: 4
+            },
         }
 
         Plotly.newPlot('cumulative_chart', [cummulative_cases], layout_cummulative);
