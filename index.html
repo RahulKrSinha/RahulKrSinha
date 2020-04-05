@@ -158,6 +158,9 @@
             y: total_patients,
             name: "total cases",
             type: 'scatter',
+            text: total_patients,
+            textposition: 'top',
+            mode: 'lines+markers+text',
             marker: {
                 color: '#0B3398'
             }
@@ -205,8 +208,12 @@
             },
         }
 
-        Plotly.newPlot('cumulative_chart', [cummulative_cases], layout_cummulative);
-        Plotly.newPlot('new_chart', [new_cases], layout_new_cases);
+        Plotly.newPlot('cumulative_chart', [cummulative_cases], layout_cummulative, {
+            staticPlot: true
+        });
+        Plotly.newPlot('new_chart', [new_cases], layout_new_cases, {
+            staticPlot: true
+        });
 
     });
 </script>
