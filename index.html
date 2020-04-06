@@ -22,6 +22,23 @@
     <link rel="stylesheet" href="css/style.css" />
 
 </head>
+<style>
+    .flex-container {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .flex-item {
+        text-align: center;
+        font-size: x-large;
+    }
+    
+    @media only screen and (max-width: 767px) {
+        .flex-item {
+            font-size: large;
+        }
+    }
+</style>
 
 <body class="project-detail">
 
@@ -72,10 +89,24 @@
                                 <br>
                                 <h6>Report as on <span id="date-time"></span></h6>
                                 <hr>
-                                <p>Total Confimed Patients: <span style="color: red;" id="confirmed"></span></p>
-                                <p>Total Active Patients: <span style="color: blue;" id="active"></span></p>
-                                <p>Total Recovered Patients: <span style="color: green;" id="recovered"></span></p>
-                                <p>Total Deceased Patients: <span id="deceased"></span></p>
+                                <div class="flex-container" style="color: red;">
+                                    <div class="flex-item">
+                                        <span id="confirmed"></span> <br>Confimed
+                                    </div>
+                                    <div class="flex-item" style="color: blue;">
+                                        <span id="active"></span>
+                                        <br>Active
+                                    </div>
+                                    <div class="flex-item" style="color: green;">
+                                        <span id="recovered"></span>
+                                        <br>Recovered
+                                    </div>
+                                    <div class="flex-item" style="color: grey;">
+                                        <span id="deceased"></span>
+                                        <br>Deceased
+                                    </div>
+                                </div>
+                                <hr>
                                 <br>
                                 <p>Newly Identified Patients in last one day: <span style="color: blue;" id="today"></span></p>
                                 <p>Newly Identified Patients in last five days: <span style="color: blue;" id="last5days"></span></p>
