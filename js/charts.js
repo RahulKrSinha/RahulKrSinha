@@ -105,7 +105,9 @@ Plotly.d3.json('master_list.json', function(err, data) {
             },
         }
 
-        Plotly.newPlot(plotname, data, layout);
+        Plotly.newPlot(plotname, data, layout, {
+            staticPlot: true
+        });
     };
 
     function updateState() {
