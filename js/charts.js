@@ -116,16 +116,16 @@ Plotly.d3.json('master_list.json', function(err, data) {
 
     function set_data() {
         $("#today").html(everyday[everyday.length - 1]);
-        var las5days = 0;
+        var las7days = 0;
         var last15days = 0;
 
         for (var i = 0; i < everyday.length; i++) {
-            if (i >= everyday.length - 5) {
-                las5days = las5days + everyday[i];
+            if (i >= everyday.length - 7) {
+                las7days = las7days + everyday[i];
             }
             last15days = last15days + everyday[i];
         }
-        $("#last5days").html(las5days);
+        $("#last7days").html(las7days);
         $("#patientRate").html(Math.round(last15days / everyday.length));
     };
 
